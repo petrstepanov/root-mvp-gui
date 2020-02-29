@@ -1,0 +1,49 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# ROOT
+*.pcm
+
+# Compiled Dynamic libraries
+#*.so
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Netbeans
+nbproject/
+.dep.inc
+build/
+dist/
+*dictionary.cxx
+*.pcm
+*.so
+
+# Eclipse
+.project
+.cproject
+.settings/
+Debug/
+
+# macOS
+.DS_store

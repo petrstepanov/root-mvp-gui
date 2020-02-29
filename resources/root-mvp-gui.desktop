@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=ROOT MVP GUI
+Comment=Example of MVP GUI for ROOT
+Icon=root-mvp-gui
+Exec=root-mvp-gui
+Terminal=true
+Categories=Science
