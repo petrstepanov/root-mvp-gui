@@ -1,12 +1,15 @@
-# SW Calculator
+# ROOT MVP GUI
 
-Program calculates S and W parameters of the 511 annihilation peak of the annihilation radiation. It is possible to estimate the binding electron energies by fitting the CDB spectrum with the contributions from e+ annihilation on electrons with different wave functions. Electrons from conduction band contribute into the spectrum as an inverted parabola. Upon the shape of the parabola we calculate Fermi energy. Check our [research group website SelimLab](http://physics.bgsu.edu/~faselim/).
+Program demonstrates a simple implementation of the Model-View-Presenter (MVP) architectural pattern in the CERN ROOT framework.
 
-<img src="http://petrstepanov.com/static/screenshot-sw-calculator.png" alt="SW Calculator desktop application" style="width: 100%;"/>
+<img src="http://petrstepanov.com/static/screenshot-root-mvp-gui.svg" alt="Implementation of the MVP architectural pattern in the CERN ROOT user interface" style="width: 100%;"/>
 
-Application is written in C++ with CERN ROOT libraries and GUI. In order to run the app first we need to install ROOT libraries. Unfortunately it is impossible to do static link your applications object files with the ROOT libraries as well as build their static versions. Moreover, sometimes source headers should be available at runtime.
-
-Currently it is possible to run application either on macOS or Linux. I will try to compile the windows binary whenever the native Windows ROOT 6 build will be released.
+The interface consists of a single *View* with an input field and two buttons. The workflow of the program is following:
+* The user interaction event with the input field attached to the \textbf{View} changes its value.
+* *View* sends the signal to the Presenter; upon receiving the notification \textbf{Presenter} passes the input field value to the Model.
+* *Model* saves the correspondent value in a data structure and emits the success signal back to the \textbf{Presenter}.
+* *Presenter* triggers the update of the View's state; *View* reflects the updated value of the input field.
+* Additionally the *Model* has capabilities of saving and reading its data structure to a local ROOT file on the hard drive. This allows saving and restoring different states of the application.
 
 ## Installation on Windows 10
 
@@ -24,8 +27,8 @@ P.S. Running the program on older versions of Windows is currently not possible.
 
 ```
 mkdir -p ~/Downloads && cd ~/Downloads
-git clone https://github.com/petrstepanov/sw-calculator
-cd ./sw-calculator
+git clone https://github.com/petrstepanov/root-mvp-gui
+cd ./root-mvp-gui
 ```
 
 3. Compile the source code and link with ROOT libraries into a binary executable:
@@ -33,13 +36,9 @@ cd ./sw-calculator
 make
 make install
 ```
-4. In order to launch the application type `sw-calculator` in Terminal.
+4. In order to launch the application type `root-mvp-gui` in Terminal.
 
-5. Optionally add an application launcher to the list of your system apps. On Linux execute `make install-linux-launcher`. On macOS run `resources/sw-calculator.pkg`.
-
-## Users Guide
-
-Not yet implemented.
+5. Optionally add an application launcher to the list of your system apps. On Linux execute `make install-linux-launcher`.
 
 ---
 
