@@ -2,14 +2,14 @@
 
 Program demonstrates a simple implementation of the Model-View-Presenter (MVP) architectural pattern in the CERN ROOT framework.
 
-<img src="http://petrstepanov.com/static/screenshot-root-mvp-gui.svg" alt="Implementation of the MVP architectural pattern in the CERN ROOT user interface" style="width: 100%;"/>
+<img src="http://petrstepanov.com/static/screenshot-root-mvp-gui.png" alt="Implementation of the MVP architectural pattern in the CERN ROOT user interface" style="width: 100%;"/>
 
-The interface consists of a single *View* with an input field and two buttons. The workflow of the program is following:
-* The user interaction event with the input field attached to the \textbf{View} changes its value.
-* *View* sends the signal to the Presenter; upon receiving the notification \textbf{Presenter} passes the input field value to the Model.
-* *Model* saves the correspondent value in a data structure and emits the success signal back to the \textbf{Presenter}.
-* *Presenter* triggers the update of the View's state; *View* reflects the updated value of the input field.
-* Additionally the *Model* has capabilities of saving and reading its data structure to a local ROOT file on the hard drive. This allows saving and restoring different states of the application.
+The interface consists of a single **View** with an input field and two buttons. Input field's value is the only value stored in the **Model**. Two buttons are used to save and load the view state. The workflow of the program is following:
+* Due to the user interaction the input field attached to the **View** changes its value.
+* **View** sends the signal to the Presenter; upon receiving the notification **Presenter** passes the input field value to the *Model**.
+* The **Model** saves correspondent value in a data structure and emits the success signal back to the **Presenter**.
+* **Presenter** triggers the update of the View's state; **View** reflects the updated value of the input field.
+* Additionally, **Model** has capabilities of writing and reading its data structure to a local ROOT file on the hard drive. This allows saving and restoring different states of  the application.
 
 ## Installation on Windows 10
 
