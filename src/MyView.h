@@ -4,17 +4,15 @@
 #include "AbstractView.h"
 #include "MyPresenter.h"
 #include <TGNumberEntry.h>
-#include <Rtypes.h>
 
 class MyPresenter;
 
 class MyView : public AbstractView<MyPresenter> {
 public:
-	// Constructor & destructor
 	MyView(const TGWindow *w = 0);
 	virtual ~MyView();
 
-	// Calls from Presenter
+	// Expose getters and setters to Presenter
 	void setMyNumber(Double_t);
 	Double_t getMyNumber();
 
