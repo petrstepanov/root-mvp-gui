@@ -1,10 +1,3 @@
-/*
- * Dataa.h
- *
- *  Created on: Feb 28, 2020
- *      Author: petrstepanov
- */
-
 #ifndef SRC_DATABASE_H_
 #define SRC_DATABASE_H_
 
