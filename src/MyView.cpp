@@ -3,9 +3,9 @@
 #include <TGFrame.h>
 
 MyView::MyView(const TGWindow* w) : AbstractView<MyPresenter>(w) {
-	initUI();
+	initializeUI();
 	presenter = instantinatePresenter();
-	connectSignals();
+	connectPresenterSignals();
 }
 
 MyView::~MyView() {
@@ -13,7 +13,7 @@ MyView::~MyView() {
 }
 
 // Initialize UI widgets
-void MyView::initUI(){
+void MyView::initializeUI(){
 	SetLayoutManager(new TGVerticalLayout(this));
 	// Number textbox
 	myNumberEntry = new TGNumberEntry(this, 0, 6, -1, TGNumberFormat::kNESRealTwo, TGNumberFormat::kNEAAnyNumber, TGNumberFormat::kNELLimitMinMax, 0, 100);
@@ -26,6 +26,18 @@ void MyView::initUI(){
 	AddFrame(loadDataButton, new TGLayoutHints(kLHintsCenterX | kLHintsTop, 0, 0, 0, 50));
 }
 
+// Instantinate the Presenter
+MyPresenter* MyView::instantinatePresenter() {
+	return new MyPresenter(this);
+}
+
+// Connect View signals to Presenter slots
+void MyView::connectPresenterSignals(){
+	myNumberEntry->Connect("ValueSet(Long_t)", "MyPresenter", presenter, "onViewMyNumberSet()");
+	saveDataButton->Connect("Clicked()", "MyPresenter", presenter, "onViewSaveDataButtonClick()");
+	loadDataButton->Connect("Clicked()", "MyPresenter", presenter, "onViewLoadDataButtonClick()");
+}
+
 // Setters and getters
 void MyView::setMyNumber(Double_t number) {
 	myNumberEntry->SetNumber(number);
@@ -33,16 +45,4 @@ void MyView::setMyNumber(Double_t number) {
 
 Double_t MyView::getMyNumber(){
 	return myNumberEntry->GetNumberEntry()->GetNumber();
-}
-
-// Instantinate the Presenter
-MyPresenter* MyView::instantinatePresenter() {
-	return new MyPresenter(this);
-}
-
-// Connect View signals to Presenter slots
-void MyView::connectSignals(){
-	myNumberEntry->Connect("ValueSet(Long_t)", "MyPresenter", presenter, "onViewMyNumberSet()");
-	saveDataButton->Connect("Clicked()", "MyPresenter", presenter, "onViewSaveDataButtonClick()");
-	loadDataButton->Connect("Clicked()", "MyPresenter", presenter, "onViewLoadDataButtonClick()");
 }

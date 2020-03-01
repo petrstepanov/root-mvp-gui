@@ -8,7 +8,11 @@
 #pragma link C++ class Model;
 #pragma link C++ class Database;
 #pragma link C++ class MyMainFrame;
+
+#pragma link C++ class AbstractView<MyPresenter>+;
 #pragma link C++ class MyView;
+
+#pragma link C++ class AbstractPresenter<Model, MyView>+;
 #pragma link C++ class MyPresenter;
 
 #endif

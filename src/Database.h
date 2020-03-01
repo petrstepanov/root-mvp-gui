@@ -16,7 +16,6 @@ public:
 	Double_t myNumber;
 
 	ClassDef(Database, 1)
-
 };
 
 #endif /* SRC_DATABASE_H_ */

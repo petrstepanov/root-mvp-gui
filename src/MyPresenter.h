@@ -38,6 +38,7 @@ public:
 	void onModelMyNumberSet(Double_t);
 	void onModelDataLoaded();
 
+	ClassDefOverride(MyPresenter, 0)
 };
 
 #endif /* MyPRESENTER_H */

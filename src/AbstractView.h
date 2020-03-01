@@ -18,10 +18,6 @@
 #include <iostream>
 
 template<class P> class AbstractView: public TGCompositeFrame {
-protected:
-	P* presenter;
-	virtual P* instantinatePresenter()=0;
-
 public:
 	AbstractView(const TGWindow *w = 0) : TGCompositeFrame(w) {
 		presenter = nullptr;
@@ -30,6 +26,15 @@ public:
 	~AbstractView() {
 		delete presenter;
 	}
+
+protected:
+	P* presenter;
+
+	virtual P* instantinatePresenter()=0;
+	virtual void connectPresenterSignals()=0;
+	virtual void initializeUI()=0;
+
+	ClassDef(AbstractView,0)
 };
 
 #endif /* ABSTRACTVIEW_H */

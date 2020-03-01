@@ -32,6 +32,8 @@ public:
 	}
 
 	~AbstractPresenter(){}
+
+	ClassDef(AbstractPresenter,0)
 };
 
 #endif /* ABSTRACTPRESENTER_H */

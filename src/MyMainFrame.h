@@ -24,7 +24,7 @@ public:
     void mapAndResize();
     void exit();
 
-    ClassDef(MyMainFrame, 0);
+    ClassDef(MyMainFrame, 0)
 };
 
 #endif /* MyMainFrameW_H */

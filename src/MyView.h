@@ -14,25 +14,22 @@ public:
 	MyView(const TGWindow *w = 0);
 	virtual ~MyView();
 
-	// Override base class virtual functions
-	MyPresenter* instantinatePresenter();
-	void connectSignals();
-
 	// Calls from Presenter
 	void setMyNumber(Double_t);
 	Double_t getMyNumber();
+
+protected:
+	// Override base class virtual functions
+	MyPresenter* instantinatePresenter() override;
+	void connectPresenterSignals() override;
+	void initializeUI() override;
 
 	// Declaration of UI objects
 	TGNumberEntry* myNumberEntry;
 	TGTextButton* saveDataButton;
 	TGTextButton* loadDataButton;
 
-protected:
-	// Initialize the UI
-	void initUI();
-
-	// ROOT's inline methods
-	ClassDef(MyView, 0);
+	ClassDefOverride(MyView,0)
 };
 
 #endif /* MYVIEW_H */
