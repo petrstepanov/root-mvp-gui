@@ -1,4 +1,4 @@
-# ROOT MVP GUI
+# CERN ROOT MVP GUI
 
 Program demonstrates a simple implementation of the Model-View-Presenter (MVP) architectural pattern in the CERN ROOT framework.
 
